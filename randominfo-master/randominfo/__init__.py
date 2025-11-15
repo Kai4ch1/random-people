@@ -1,9 +1,8 @@
 from __future__ import unicode_literals
 
-import os
 import sys, glob, csv, pytz, shutil
-from os import listdir, getcwd, access, W_OK
-from os.path import abspath, join, dirname, split, exists, isfile, isdir
+from os import access, W_OK
+from os.path import abspath, join, dirname, split
 sys.path.append("/randominfo/")
 from random import randint, choice, sample, randrange
 from datetime import datetime
@@ -70,6 +69,7 @@ def get_last_name():
 def get_gender(first_name):
     firstNameFile = csv.reader(open(full_path('data.csv'), 'r'))
     gender = ""
+    next(firstNameFile)
     for data in firstNameFile:
         if data[0] != '' and data[0] == first_name:
             gender = data[2]
